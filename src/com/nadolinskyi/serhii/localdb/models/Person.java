@@ -7,7 +7,7 @@ import com.activeandroid.annotation.Table;
 @Table(name = SQLTablesConstants.TABLE_PERSONS)
 public class Person extends Model implements SQLTablesConstants {
 	
-	@Column(name = ROW_ID)
+	@Column(name = ROW_ID, unique = true, onUniqueConflict = Column.ConflictAction.REPLACE)
 	public long customId;
 	@Column(name = ROW_NAME)
 	public String name;
