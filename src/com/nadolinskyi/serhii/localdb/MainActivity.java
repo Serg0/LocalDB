@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import com.nadolinskyi.serhii.localdb.constants.MockNames;
+import com.nadolinskyi.serhii.localdb.constants.MockData;
+import com.nadolinskyi.serhii.localdb.models.Group;
 import com.nadolinskyi.serhii.localdb.models.Person;
 
 import android.os.Bundle;
@@ -24,14 +25,29 @@ public class MainActivity extends Activity {
 	private void processDB() {
 		
 		
-		List<Person> personsList = geneRatePersonsList(10);
+		List<Person> personsList = generatePersonsList(10);
 		
 		
 	}
 
+	private List<Group> generateGroupsList(int listSize) {
+		// TODO check this
+		
+		List<Group> groups = new ArrayList<Group>();
+
+		Random rand = new Random(53);
+		
+		for(int index = 0; index < listSize; index++){
+			
+			Group group = new Group();
+			group.setCustomId(rand.nextLong());
+		}
+		
+		return groups;
+	}
 	
 	
-	private List<Person> geneRatePersonsList(int listSize) {
+	private List<Person> generatePersonsList(int listSize) {
 		// TODO check this
 		
 		List<Person> persons = new ArrayList<Person>();
@@ -45,17 +61,15 @@ public class MainActivity extends Activity {
 			
 			person.setMale(isMale);
 			if(isMale){
-				person.setName(MockNames.maleNames[rand.nextInt(MockNames.maleNames.length)]);
+				person.setName(MockData.maleNames[rand.nextInt(MockData.maleNames.length)]);
 			}else{
-				person.setName(MockNames.femaleNames[rand.nextInt(MockNames.femaleNames.length)]);
+				person.setName(MockData.femaleNames[rand.nextInt(MockData.femaleNames.length)]);
 			}
 			
 			person.setCustomId(rand.nextLong());
 			
 		}
-		
-		
-		
+				
 		return persons;
 	}
 

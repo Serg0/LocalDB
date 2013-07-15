@@ -1,11 +1,14 @@
 package com.nadolinskyi.serhii.localdb.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
 
 @Table(name = SQLTablesConstants.TABLE_PERSONS)
-public class Person extends Model implements SQLTablesConstants {
+public class Person extends Model implements SQLTablesConstants, Parcelable {
 	
 	@Column(name = ROW_ID, unique = true, onUniqueConflict = Column.ConflictAction.REPLACE)
 	public long customId;
@@ -69,8 +72,39 @@ public class Person extends Model implements SQLTablesConstants {
 	public void setMale(boolean isMale) {
 		this.isMale = isMale;
 	}
+
+
+	@Override
+	public int describeContents() {
+		return 0;
+	}
+
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+
+		dest.writeLong(customId);
+		dest.writeString(name);
+		dest.writeInt(age);
+		dest.writeByte((byte) (isMale ? 1 : 0));
+	}
 	
+	public Person(Parcel in){
+		customId	= in.readLong();
+		name 		= in.readString();
+		age			= in.readInt();
+		isMale		= in.readByte() == 1;
+	}
 	
+	public static final Parcelable.Creator<Person> CREATOR = new Parcelable.Creator<Person>() {
+		public Person createFromParcel(Parcel in) {
+			return new Person(in);
+		}
+
+		public Person[] newArray(int size) {
+			return new Person[size];
+		}
+	};
 
 	
 	

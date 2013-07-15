@@ -1,6 +1,6 @@
 package com.nadolinskyi.serhii.localdb.constants;
 
-public class MockNames {
+public class MockData {
 
 	public static final String[] maleNames = new String[]{
 			"Arnulfo Hunsicker",
@@ -106,4 +106,44 @@ public class MockNames {
 			"In Capps",
 			"Paola Rost"};  
 	
+	
+	public static final String[] mockGroups = new String[]{
+		"gravida",
+		"et",
+		"vulputate",
+		"integer",
+		"sed",
+		"cras",
+		"condimentum",
+		"ut",
+		"bibendum",
+		"duis",
+		"maecenas",
+		"condimentum",
+		"sapien",
+		"sit",
+		"nibh",
+		"dui",
+		"luctus",
+		"nibh",
+		"nulla",
+		"nunc",
+		"cursus",
+		"nullam",
+		"at",
+		"purus",
+		"libero",
+		"amet",
+		"luctus",
+		"ultrices",
+		"bibendum",
+		"tellus",
+		"blandit",
+		"praesent",
+		"porta",
+		"lobortis",
+		"sapien",
+		"quam",
+		"mauris"};
+
 }
