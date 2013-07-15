@@ -1,4 +1,4 @@
-package com.nadolinskyi.serhii.localdb;
+package com.nadolinskyi.serhii.localdb.utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,29 +8,9 @@ import com.nadolinskyi.serhii.localdb.constants.MockData;
 import com.nadolinskyi.serhii.localdb.models.Group;
 import com.nadolinskyi.serhii.localdb.models.Person;
 
-import android.os.Bundle;
-import android.app.Activity;
-import android.view.Menu;
+public class DataUtils {
 
-public class MainActivity extends Activity {
-
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-		
-		processDB();
-	}
-
-	private void processDB() {
-		
-		
-		List<Person> personsList = generatePersonsList(10);
-		
-		
-	}
-
-	private List<Group> generateGroupsList(int listSize) {
+	public static List<Group> generateGroupsList(int listSize) {
 		// TODO check this
 		
 		List<Group> groups = new ArrayList<Group>();
@@ -47,7 +27,7 @@ public class MainActivity extends Activity {
 	}
 	
 	
-	private List<Person> generatePersonsList(int listSize) {
+	public static List<Person> generatePersonsList(int listSize) {
 		// TODO check this
 		
 		List<Person> persons = new ArrayList<Person>();
@@ -72,12 +52,4 @@ public class MainActivity extends Activity {
 				
 		return persons;
 	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
-
 }
